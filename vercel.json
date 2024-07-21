@@ -1,0 +1,5 @@
+{
+  "region": ["sin1"],
+  "functionFailoverRegions": ["syd1"],
+  "installCommand": "dnf config-manager --set-enabled PowerTools"
+}
