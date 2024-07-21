@@ -1,7 +1,11 @@
 "use client";
+import dynamic from "next/dynamic";
 import { Button } from "./ui/button";
 import { Dialog, DialogContent, DialogTitle, DialogTrigger } from "./ui/dialog";
-import { UploadSubmission } from "./upload-submission";
+
+const UploadSubmission = dynamic(() => import("./upload-submission"), {
+  ssr: false,
+});
 
 export const SubmissionDialog = () => {
   return (

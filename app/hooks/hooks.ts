@@ -7,7 +7,7 @@ export const useUploadSubmission = () => {
   const handleSendImage = async ({ campaignTitle, questTitle, submitedImage }: {
     campaignTitle: string;
     questTitle: string;
-    submitedImage: File | null;
+    submitedImage?: File | null;
   }) => {
     const postUrl = await generateUploadUrl();
     const result = await fetch(postUrl, {

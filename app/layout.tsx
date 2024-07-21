@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Asap } from "next/font/google";
 import "./globals.css";
 import ConvexClientProvider from "./providers/convex-client-provider";
 import { NavBar } from "@/components/navbar";
-import BarProviders from "@/components/bar-provider";
 
-const inter = Inter({ subsets: ["latin"] });
+import { Toaster } from "@/components/ui/toaster";
+import BarProviders from "./providers/bar-provider";
+const inter = Asap({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -26,6 +27,7 @@ export default function RootLayout({
             {children}
           </ConvexClientProvider>
         </BarProviders>
+        <Toaster />
       </body>
     </html>
   );

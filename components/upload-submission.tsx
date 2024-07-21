@@ -24,13 +24,16 @@ const formSchema = z.object({
     .string()
     .min(2, { message: "Quest title must contain at least 2 character" })
     .max(100),
-  submitedImage: z
-    .instanceof(FileList)
-    .refine((file) => file?.length == 1, "File is required.")
-    .transform((file) => file[0]),
+  submitedImage:
+    typeof window === undefined
+      ? z.any()
+      : z
+          .instanceof(globalThis.FileList)
+          .refine((file) => file?.length == 1, "File is required.")
+          .transform((file) => file[0]),
 });
 
-export const UploadSubmission = () => {
+const UploadSubmission = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -43,7 +46,7 @@ export const UploadSubmission = () => {
   return (
     <Form {...form}>
       <form
-        className="flex flex-col space-y-4"
+        className="flex flex-col gap-4"
         onSubmit={form.handleSubmit(async (data) => await upload({ ...data }))}
       >
         <div>
@@ -80,7 +83,7 @@ export const UploadSubmission = () => {
           <FormField
             control={form.control}
             name="submitedImage"
-            render={({ field }) => (
+            render={() => (
               <FormItem>
                 <FormControl>
                   <Input type="file" accept="image/*" {...fileRef} />
@@ -103,3 +106,5 @@ export const UploadSubmission = () => {
     </Form>
   );
 };
+
+export default UploadSubmission;

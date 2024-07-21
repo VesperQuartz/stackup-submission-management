@@ -37,17 +37,10 @@ export const getAllSubmission = query({
     if (identity === null) {
       return []
     }
-    const submission = await ctx.db.query("submissions").collect();
+    const submission = await ctx.db.query("submissions").order("desc").collect();
     return Promise.all(submission?.map(async (sub) => {
       return { ...sub, imageUrl: await ctx.storage.getUrl(sub.body) }
     }));
-  }
-})
-
-export const geUploadedFile = query({
-  args: { id: v.string() },
-  handler: async (ctx, args) => {
-    return await ctx.storage.getUrl(args.id)
   }
 })
 

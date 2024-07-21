@@ -1,5 +1,4 @@
 "use client";
-
 import { api } from "@/convex/_generated/api";
 import { useMutation, useQuery } from "convex/react";
 import {
@@ -11,7 +10,12 @@ import {
   CardTitle,
 } from "./ui/card";
 import Image from "next/image";
-import { EllipsisVertical, SquareArrowOutUpRight, Trash } from "lucide-react";
+import {
+  EllipsisVertical,
+  SquareArrowOutUpRight,
+  Trash,
+  Link as ShareLink,
+} from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -19,8 +23,11 @@ import {
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
 import Link from "next/link";
+import React from "react";
+import { useToast } from "./ui/use-toast";
 
 export const Submissions = () => {
+  const { toast } = useToast();
   const submission = useQuery(api.files.getAllSubmission);
   const deleteSub = useMutation(api.files.deletedSubmission);
   if (submission === undefined) {
@@ -38,19 +45,29 @@ export const Submissions = () => {
     );
   }
   return (
-    <div className="md:grid md:grid-cols-3 md:gap-x-4 p-2 m-2">
+    <div className="flex flex-col gap-4 sm:grid sm:grid-cols-2 md:grid-cols-3 sm:gap-4 p-2 m-2">
       {submission?.map((sub) => {
         return (
-          <Card key={sub._id}>
+          <Card key={sub._id} className="min-h-[20rem]">
             <CardContent
               style={{ backgroundImage: `url(${sub.imageUrl})` }}
-              className="h-40 bg-cover bg-center"
+              className="min-h-40 bg-cover bg-center"
             ></CardContent>
-            <CardHeader className="flex flex-col justify-center">
+            <CardHeader className="flex flex-col justify-center mt-auto">
               <CardTitle>{sub.campaignTitle}</CardTitle>
               <CardDescription>{sub.questTitle}</CardDescription>
             </CardHeader>
-            <CardFooter className="flex justify-end">
+            <CardFooter className="flex justify-end mt-auto gap-2">
+              <ShareLink
+                className="cursor-pointer"
+                onClick={() => {
+                  navigator.clipboard.writeText(sub.imageUrl!);
+                  toast({
+                    title: "Link Copied",
+                    description: "Link copied to clipboard",
+                  });
+                }}
+              />
               <DropdownMenu>
                 <DropdownMenuTrigger>
                   <EllipsisVertical />
