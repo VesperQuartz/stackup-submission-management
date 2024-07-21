@@ -31,15 +31,20 @@ export const convertAction = async (_prevState: any, formData: FormData) => {
 
     const filepaths = await Promise.all(buffers.map(async (buffer) => {
       const filepath = `/tmp/${crypto.randomUUID()}.png`;
-      await writeFile(filepath, buffer);
-      return filepath;
+      try {
+        await writeFile(filepath, buffer);
+        return filepath;
+      } catch (error) {
+        console.error("err: ", error);
+        return { error: "Cannot write file to disk!" };
+      }
     }));
 
     const result = await new Promise((resolve, reject) => {
-      const img = magick(filepaths[0]).command("convert").in(orientation ? "-append" : "+append");
-      img.append.apply(img, [filepaths.slice(1)]).toBuffer("PNG", async (err, buffer) => {
+      const img = magick(filepaths[0] as string).command("convert").in(orientation ? "-append" : "+append");
+      img.append.apply(img, [filepaths.slice(1) as Array<string>]).toBuffer("PNG", async (err, buffer) => {
         if (err) {
-          reject({ error: "Cannot convert file" });
+          reject({ error: "Cannot convert file " + err });
         } else {
           const stream = new Uint8Array(buffer);
           try {
