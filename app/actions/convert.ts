@@ -5,7 +5,6 @@ import { writeFile } from "fs/promises";
 import crypto from "crypto";
 import { put } from '@vercel/blob';
 import gm from "gm";
-const magick = gm.subClass({ imageMagick: false });
 
 const formSchema = zfd.formData({
   file: zfd.file().array().min(2, { message: "Please upload at least 2 files" }).max(10, { message: "You can upload up to 10 images" }),
@@ -41,7 +40,7 @@ export const convertAction = async (_prevState: any, formData: FormData) => {
     }));
 
     const result = await new Promise((resolve, reject) => {
-      const img = magick(filepaths[0] as string).command("convert").in(orientation ? "-append" : "+append");
+      const img = gm(filepaths[0] as string).command("convert").in(orientation ? "-append" : "+append");
       img.append.apply(img, [filepaths.slice(1) as Array<string>]).toBuffer("PNG", async (err, buffer) => {
         if (err) {
           reject({ error: "Cannot convert file " + err });
