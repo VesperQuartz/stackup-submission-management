@@ -5,7 +5,6 @@ import { writeFile } from "fs/promises";
 import { nanoid } from 'nanoid'
 import { put } from '@vercel/blob';
 import gm from "gm";
-import { readdirSync } from "fs";
 
 const formSchema = zfd.formData({
   file: zfd.file().array().min(2, { message: "Please upload at least 2 files" }).max(10, { message: "You can upload up to 10 images" }),

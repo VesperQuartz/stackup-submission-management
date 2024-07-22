@@ -8,5 +8,8 @@ export default defineSchema({
     format: v.string(),
     id: v.string(),
     questTitle: v.string(),
-  }),
+  }).searchIndex("campaign_body", {
+    searchField: "campaignTitle",
+    filterFields: ["campaignTitle"]
+  }).index("by_title", ["campaignTitle"]),
 });
