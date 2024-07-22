@@ -4,7 +4,7 @@ import { Button } from "./ui/button";
 import { match } from "ts-pattern";
 import { LoaderCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
-import crypto from "crypto";
+import { nanoid } from "nanoid";
 
 export const ActionButton = ({
   className,
@@ -15,11 +15,7 @@ export const ActionButton = ({
 }) => {
   const { pending } = useFormStatus();
   return (
-    <Button
-      key={crypto.randomUUID()}
-      disabled={pending}
-      className={cn(className)}
-    >
+    <Button key={nanoid()} disabled={pending} className={cn(className)}>
       {match(pending)
         .with(true, () => <LoaderCircle className="animate-spin" />)
         .with(false, () => text)

@@ -2,7 +2,7 @@ import { AlertCircle, CloudDownload } from "lucide-react";
 import { Alert, AlertDescription, AlertTitle } from "./ui/alert";
 import { match, P } from "ts-pattern";
 import { Button } from "./ui/button";
-import crypto from "crypto";
+import { nanoid } from "nanoid";
 
 export const ErrorHandler = ({
   state,
@@ -19,7 +19,7 @@ export const ErrorHandler = ({
               className="gap-2"
               type="submit"
               onClick={async () => {}}
-              key={crypto.randomUUID()}
+              key={nanoid()}
             >
               <a href={data.message}>
                 <CloudDownload /> Download
@@ -28,7 +28,7 @@ export const ErrorHandler = ({
           );
         })
         .with({ error: P.string }, (data) => (
-          <Alert variant="destructive" key={crypto.randomUUID()}>
+          <Alert variant="destructive" key={nanoid()}>
             <AlertCircle className="h-4 w-4" />
             <AlertTitle>Error</AlertTitle>
             <AlertDescription>{data.error}</AlertDescription>

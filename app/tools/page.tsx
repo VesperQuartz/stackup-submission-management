@@ -1,5 +1,6 @@
 "use client";
 import { Switch } from "@/components/ui/switch";
+import { nanoid } from "nanoid";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -10,7 +11,6 @@ import { ActionButton } from "@/components/action-button";
 import { useFormState } from "react-dom";
 import { convertAction } from "../actions/convert";
 import { ErrorHandler } from "@/components/error-handler";
-import crypto from "crypto";
 
 const Tools = () => {
   const [images, setImages] = React.useState<FileList | null>(null);
@@ -65,7 +65,7 @@ const Tools = () => {
           {imageUrls.map((image) => {
             return (
               <Image
-                key={crypto.randomUUID()}
+                key={nanoid()}
                 src={image}
                 alt={image}
                 width={100}

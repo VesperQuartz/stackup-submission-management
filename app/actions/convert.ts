@@ -2,7 +2,7 @@
 import { z } from "zod";
 import { zfd } from "zod-form-data";
 import { writeFile } from "fs/promises";
-import crypto from "crypto";
+import { nanoid } from 'nanoid'
 import { put } from '@vercel/blob';
 import gm from "gm";
 import { readdirSync } from "fs";
@@ -30,7 +30,7 @@ export const convertAction = async (_prevState: any, formData: FormData) => {
     const buffers = arrayBuffers.map(buffer => Buffer.from(buffer));
 
     const filepaths = await Promise.all(buffers.map(async (buffer) => {
-      const filepath = `/tmp/${crypto.randomUUID()}.png`;
+      const filepath = `/tmp/${nanoid()}.png`;
       try {
         await writeFile(filepath, buffer);
         return filepath;
