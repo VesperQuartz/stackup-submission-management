@@ -2,6 +2,7 @@ import { AlertCircle, CloudDownload } from "lucide-react";
 import { Alert, AlertDescription, AlertTitle } from "./ui/alert";
 import { match, P } from "ts-pattern";
 import { Button } from "./ui/button";
+import crypto from "crypto";
 
 export const ErrorHandler = ({
   state,
