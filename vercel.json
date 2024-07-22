@@ -1,4 +1,4 @@
 {
   "regions": ["sin1"],
-  "installCommand": "dnf install -y GraphicsMagick GraphicsMagick-devel GraphicsMagick-perl && gm -version"
+  "installCommand": "dnf install -y ImageMagick GraphicsMagick GraphicsMagick-devel GraphicsMagick-perl"
 }
