@@ -5,6 +5,7 @@ import { writeFile } from "fs/promises";
 import crypto from "crypto";
 import { put } from '@vercel/blob';
 import gm from "gm";
+import { readdirSync } from "fs";
 
 const formSchema = zfd.formData({
   file: zfd.file().array().min(2, { message: "Please upload at least 2 files" }).max(10, { message: "You can upload up to 10 images" }),
@@ -38,14 +39,17 @@ export const convertAction = async (_prevState: any, formData: FormData) => {
         return { error: "Cannot write file to disk!" };
       }
     }));
-
+    console.log("paths:", readdirSync("/tmp"))
     const result = await new Promise((resolve, reject) => {
-      const img = gm(filepaths[0] as string).command("convert").in(orientation ? "-append" : "+append");
-      img.append.apply(img, [filepaths.slice(1) as Array<string>]).toBuffer("PNG", async (err, buffer) => {
+      const img = gm(filepaths[0] as string).limit('memory', "1472").command("convert").in(orientation ? "-append" : "+append");
+      img.append.apply(img, [filepaths.slice(1) as Array<string>]).toBuffer(async (err, buffer) => {
         if (err) {
+          console.error("stream:", buffer);
+          console.error("Err:", err);
           reject({ error: "Cannot convert file " + err });
         } else {
           const stream = new Uint8Array(buffer);
+          console.error("stream:", stream);
           try {
             const { downloadUrl } = await put(filename, stream, { access: "public", addRandomSuffix: false });
             console.log(downloadUrl)
