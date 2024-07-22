@@ -10,6 +10,7 @@ import { ActionButton } from "@/components/action-button";
 import { useFormState } from "react-dom";
 import { convertAction } from "../actions/convert";
 import { ErrorHandler } from "@/components/error-handler";
+import crypto from "crypto";
 
 const Tools = () => {
   const [images, setImages] = React.useState<FileList | null>(null);
