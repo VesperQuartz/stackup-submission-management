@@ -1,36 +1,38 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Stackup submission Management system
 
-## Getting Started
+Welcome to the Stack Up Submission Manager! 🎉
 
-First, run the development server:
+## Overview
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Have you ever had the impression that the submissions you made for Stack Up are vanishing into thin air? Put an end to your worries! This is where the Stack Up Submission Manager comes in handy. For effortless management, archiving, and sharing of your entries, our web application is your ideal companion. Embrace organizing joy and bid adieu to confusion surrounding submissions!
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Demo
+## The Issue
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Stack Up platform submission management can be a big nuisance. People require an improved means of:
+- Save a copy of their submissions in case you need them later.
+- Send easy-to-access links to their submissions.
+- To maintain organization, view and remove previous submissions.
+- Combine pictures into a single, smooth submission.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## The Solution
 
-## Learn More
+The goal of the Stack Up Submission Manager is to simplify and enhance your life. This is the method we use:
 
-To learn more about Next.js, take a look at the following resources:
+- Archive Your Submissions: To ensure that you never lose sight of your work, make a personal copy of each submission.
+- Exchange Links: Easily provide friends, coworkers, or the globe with links to your entries.
+- View and Delete: You can quickly review the submissions you've made in the past and remove those that you don't need.
+- Image Joiner Tool: Utilize our handy tool to combine several photos into a single, amazing submission. Ideal for presenting your work!
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Video Demo
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+## Link to deployed Site
+[Stackup Submission Manager](https://stackup-submission-management.chickenkiller.com/)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## To-Do
+- [x] Add tagging and categorization for submissions
+- [x] Improve the image joiner utility with more customization options
+- [x] Submission Grouping
+- [x] Infinite scrolling or pagination for submissions
+- [x] ETC
