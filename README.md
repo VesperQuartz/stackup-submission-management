@@ -24,10 +24,10 @@ The goal of the Stack Up Submission Manager is to simplify and enhance your life
 - View and Delete: You can quickly review the submissions you've made in the past and remove those that you don't need.
 - Image Joiner Tool: Utilize our handy tool to combine several photos into a single, amazing submission. Ideal for presenting your work!
 
-## Video Demo
-
-
 ## Link to deployed Site
+
+### Please use this link
+
 [Stackup Submission Manager](https://stackup-submission-management.chickenkiller.com/)
 
 ## To-Do
