@@ -7,6 +7,11 @@ Welcome to the Stack Up Submission Manager! 🎉
 Have you ever had the impression that the submissions you made for Stack Up are vanishing into thin air? Put an end to your worries! This is where the Stack Up Submission Manager comes in handy. For effortless management, archiving, and sharing of your entries, our web application is your ideal companion. Embrace organizing joy and bid adieu to confusion surrounding submissions!
 
 ## Demo
+
+
+https://github.com/user-attachments/assets/450402de-e103-4543-8492-19b5e8685f79
+
+
 ## The Issue
 
 Stack Up platform submission management can be a big nuisance. People require an improved means of:
