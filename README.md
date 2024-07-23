@@ -8,10 +8,9 @@ Have you ever had the impression that the submissions you made for Stack Up are 
 
 ## Demo
 
+If video say's it's corrupt please use chromium based browser.
 
 https://github.com/user-attachments/assets/ddfa83f9-af17-497c-add0-e0f101dc4bb1
-
-
 
 ## The Issue
 
